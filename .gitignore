@@ -1,0 +1,8 @@
+﻿.idea
+*.html
+.vs
+.sonarqube
+dotCover.Output
+bin
+obj
+TestResults
