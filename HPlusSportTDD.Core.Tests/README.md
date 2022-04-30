@@ -3,3 +3,6 @@
 dotnet build --no-incremental
 dotnet dotcover test --dcReportType=HTML
 dotnet sonarscanner end /d:sonar.login="key" 
+
+## Reference
+[https://docs.sonarcloud.io/enriching/test-coverage/dotnet-test-coverage/](https://docs.sonarcloud.io/enriching/test-coverage/dotnet-test-coverage/)
