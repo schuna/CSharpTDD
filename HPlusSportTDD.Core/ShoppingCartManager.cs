@@ -1,18 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HPlusSportTDD.Core
 {
     public class ShoppingCartManager
     {
+        private readonly List<AddToCartItem> _shoppingCart;
+
         public ShoppingCartManager()
         {
+            _shoppingCart = new List<AddToCartItem>();
         }
 
-        public static AddToCartResponse AddToCart(AddToCartRequest request)
+        public AddToCartResponse AddToCart(AddToCartRequest request)
         {
+            var item = _shoppingCart.Find(i => i.ArticleId == request.Item.ArticleId);
+            if (item != null)
+            {
+                item.Quantity += request.Item.Quantity;
+            }
+            else
+            {
+                _shoppingCart.Add(request.Item);
+            }
+
             return new AddToCartResponse()
             {
-                Items = new AddToCartItem[] { request.Item }
+                Items = _shoppingCart.ToArray()
             };
         }
     }
